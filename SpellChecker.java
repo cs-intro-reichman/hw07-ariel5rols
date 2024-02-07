@@ -15,8 +15,8 @@ public class SpellChecker {
 	}
 
 	public static int levenshtein(String word1, String word2) {
-		word2=  word2.toLowerCase();
-		word1=  word1.toLowerCase();
+		word2 =  word2.toLowerCase();
+		word1 =  word1.toLowerCase();
 		if(word1.isEmpty()){
 			return word2.length();
 		}
@@ -27,8 +27,8 @@ public class SpellChecker {
 			return levenshtein(tail(word1),tail(word2));
 		}
 		else{
-			int min = Math.min(Math.min(levenshtein(tail(word1),word2),levenshtein(word1,tail(word2))),levenshtein(tail(word1),tail(word2)));
-			return (1 + min);
+			int min = Math.min(Math.min(levenshtein(tail(word1),word2), levenshtein(word1,tail(word2))), levenshtein(tail(word1),tail(word2)));
+			return (min + 1);
 		}
 	}
 
@@ -54,6 +54,7 @@ public class SpellChecker {
 				closestWord = dictionary[i];
 			}
 		}
+		if(minLevDistance > threshold){return word;}
 		return closestWord;
 	}
 
