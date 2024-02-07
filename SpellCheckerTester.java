@@ -6,7 +6,7 @@ public class SpellCheckerTester {
             System.out.println("Usage: java SpellCheckerTester <word> <threshold>");
             return;
         }
-
+ 
         String word = args[0];
         int threshold = Integer.parseInt(args[1]);
 
