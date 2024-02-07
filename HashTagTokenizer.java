@@ -1,4 +1,6 @@
-
+import java.util.HashSet;
+import java.util.Set;
+import java.util.Arrays;
 
 public class HashTagTokenizer {
 
@@ -14,13 +16,16 @@ public class HashTagTokenizer {
 
 		In in = new In(fileName);
 
-		// Your code here
+		for(int i= 0;i<dictionary.length;i++){
+			dictionary[i] = in.readLine();
+		}
 
 		return dictionary;
 	}
 
 	public static boolean existInDictionary(String word, String []dictionary) {
-		// Your code here
+		Set<String> values = new HashSet<>(Arrays.asList(dictionary));
+		return values.contains(word) ? true : false;
 	}
 
 	public static void breakHashTag(String hashtag, String[] dictionary) {
@@ -29,11 +34,15 @@ public class HashTagTokenizer {
         if (hashtag.isEmpty()) {
             return;
         }
- 
-        int N = hashtag.length();
-
-        for (int i = 1; i <= N; i++) {
 		
+		hashtag = hashtag.toLowerCase();
+
+        for (int i = 1; i <= hashtag.length(); i++) {
+			String temp = hashtag.substring(0, i);
+			if (existInDictionary(temp, dictionary)) {
+				System.out.println(temp);
+				breakHashTag(hashtag.substring(i, hashtag.length()), dictionary);
+			}
         }
     }
 
