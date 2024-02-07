@@ -25,7 +25,7 @@ public class HashTagTokenizer {
 
 	public static boolean existInDictionary(String word, String []dictionary) {
 		Set<String> values = new HashSet<>(Arrays.asList(dictionary));
-		return values.contains(word) ? true : false;
+		return values.contains(word);
 	}
 
 	public static void breakHashTag(String hashtag, String[] dictionary) {
