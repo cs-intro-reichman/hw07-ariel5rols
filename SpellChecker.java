@@ -38,7 +38,7 @@ public class SpellChecker {
 		In in = new In(fileName);
 
 		for (int i = 0; i < dictionary.length; i++){
-			dictionary[i] = in.readline();
+			dictionary[i] = in.readLine();
 		}
 
 		return dictionary;
